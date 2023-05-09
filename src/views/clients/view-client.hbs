@@ -1,0 +1,52 @@
+
+<div class="mx-auto">
+    <div class="card">
+        <div class="card-header">
+            <h1 class="black">{{client.clientName}} <a href="/clients/edit/{{client._id}}"><i class="fas fa-edit"></i></a></h1>
+        </div>
+        <div class="card-body">   
+                <ul>
+                <li class="cli">Name: {{client.contactName}}</li>
+                <li class="cli">Phone: {{client.phone}}</li>
+                <li class="cli">{{client.email}}</li>
+                <li class="cli">Cuit: {{client.cuit}}</li>
+                </ul>
+                 <div class="serviceList">
+        <h2 class="title">Services: <a href="/services/add/{{client._id}}"><i class="fa-solid fa-plus"></i></a></h2>
+        {{#each client.service}}
+            <div class="service mx-auto">
+                <div class="card">
+                    <div class="card-header">
+            <p class="title"> {{this.name}}<a href="/services/edit/{{../client._id}}/{{this._id}}"><i class="fas fa-edit"></i></a></p>
+                    </div>
+            <div class="card-body">
+                <p class="serviceItem">Start: {{this.date}}</p>
+                <p class="serviceItem">Renew: {{this.renew}}</p>
+                <p class="serviceItem">Price: <span class="bold">{{this.price}}</span></p>
+                <p class="serviceItem">{{this.description}}</p>
+                <p class="serviceItem">Payments: <a href="/payments/add/{{../client._id}}/{{this._id}}"><i class="fa-solid fa-plus"></i></a></p>
+                {{#each this.payments}}
+                <div class="line"></div>
+                  <p class="serviceItem">Payment Method: {{this.paymentMethod}}</p>
+                  <p class="serviceItem">Price: <span class="bold">{{this.price}}</span></p>
+                  <p class="serviceItem">Currency: {{this.currency}}</p>
+                  <p class="serviceItem">Details: {{this.details}}</p> 
+                  <p class="serviceItem">Date: {{this.date}}</p> 
+                    <form action="/payments/delete/{{../../client._id}}/{{../this._id}}/{{this._id}}?_method=DELETE" method="POST">
+                        <input type="hidden" name="method" value="DELETE">
+                        <button type="submit" class="btn btn-danger btn-block btn-sm">Delete Payment</button>
+                    </form>      
+                {{/each}}
+            </div>
+            </div>
+            <form action="/services/delete/{{../client._id}}/{{this._id}}?_method=DELETE" method="POST">
+                <input type="hidden" name="method" value="DELETE">
+                <button type="submit" class="btn btn-danger btn-block btn-sm">Delete Service!</button>
+            </form>
+            </div>
+        {{/each}}
+    </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="col-md4 mx-auto">
+    <div class="card">
+        <div class="card-header">
+            <h1>View Service</h1>
+        </div>
+        <div class="card-body">
+            <form action="/clients/edit/{{client._id}}?_method=PUT" method="POST">
+            <input type="hidden" name="_method" value="PUT">
+
+                 <div class="form-group">
+        <input type="text" name="clientName" class="form-control" value="{{client.clientName}}">
+    </div>
+    <div class="form-group">
+        <input type="text" name="contactName" class="form-control" value="{{client.contactName}}">
+    </div>
+     <div class="form-group">
+        <input type="text" name="phone" class="form-control" value="{{client.phone}}">
+    </div>
+     <div class="form-group">
+        <input type="text" name="email" class="form-control" value="{{client.email}}">
+    </div>
+     <div class="form-group">
+        <input type="text" name="cuit" class="form-control" value="{{client.cuit}}">
+    </div>
+    <div class="serviceList">
+        <h2 class="title">Services2:</h2>
+        {{#each client.service}}
+            <div class="service col-md-3">
+            <p class="title"> {{this.name}}<a href="/service/edit/{{_id}}"><i class="fas fa-edit"></i></a></p>
+            <p class="serviceItem">Start: {{this.date}}</p>
+            <p class="serviceItem">Renew: {{this.renew}}</p>
+            <p class="serviceItem">Price: {{this.price}}</p>
+            <p class="serviceItem">Payments:</p>
+            <form action="/service/delete/{{_id}}?_method=DELETE" method="POST">
+                <input type="hidden" name="method" value="DELETE">
+                <button type="submit" class="btn btn-danger btn-block btn-sm">Delete</button>
+            </form>
+            </div>
+        {{/each}}
+    </div>
+     {{!-- <div class="form-group">
+        <input type="text" name="service" class="form-control" value="{{client.service.name}}">
+    </div> --}}
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block" type="submit">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

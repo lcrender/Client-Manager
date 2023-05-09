@@ -1,0 +1,59 @@
+body {
+    background-color: #1488cc;
+}
+.cli {
+    list-style: none;
+    border-bottom: solid 1px #e3e3e3;
+    padding: 5px 0 5px 0;
+}
+ul {
+    padding-left: 3px;
+    padding-right: 3px;
+}
+.fa-plus, .fa-edit {
+    float: right;
+}
+h1, .h1 {
+    font-weight: 900;
+    color: #fff;
+}
+.title {
+margin-bottom: 30px;
+}
+a:hover {
+    text-decoration: none;
+}
+.title {
+    font-size: 24px;
+}
+.service {
+    margin-bottom: 50px;
+    text-decoration: none;
+}
+.serviceList {
+    margin-bottom: 50px;
+}
+.serviceItem {
+    font-size: 17px;
+    margin: 12px;
+}
+.black {
+    color: #000;
+}
+.volar {
+    float: left;
+}
+.bold {
+    font-weight: bold;
+}
+.line {
+    border-bottom: 1px solid #f2f2f2;
+}
+.cliService {
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #208aca;
+    color: #f2f2f2;
+    padding: 5px;
+    display: inline-block;
+}

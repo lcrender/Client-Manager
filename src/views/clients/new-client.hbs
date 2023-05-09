@@ -1,0 +1,88 @@
+<div class="mx-auto">
+    <div class="card text-center">
+        <div class="card-header">
+            <h3>New Client</h3>
+        </div>
+        <div class="card-body">
+<form action="/clients/new-client" method="POST">
+<div class="col-md-6 volar">
+    <h4>Client Details</h4>
+    <p>Complete Company Info</p>
+    <div class="form-group">
+        <input type="text" name="clientName" class="form-control" placeholder="Company Name" autofocus>
+    </div>
+    <div class="form-group">
+        <input type="text" name="contactName" class="form-control" placeholder="Contact Name">
+    </div>
+     <div class="form-group">
+        <input type="tel" name="phone" class="form-control" placeholder="Phone">
+    </div>
+     <div class="form-group">
+        <input type="email" name="email" class="form-control" placeholder="Email">
+    </div>
+     <div class="form-group">
+        <input type="text" name="cuit" class="form-control" placeholder="Cuit Number">
+    </div>
+    </div>
+    <div class="col-md-6 volar">
+        <h4>Services</h4>
+        <p>Hosting</p>
+     <div class="form-group">
+      <select class="form-control" name="hosting">
+        <option value="">-- Select Hosting --</option>
+        <option value="Hosting L">Hosting L</option>
+        <option value="Hosting Vip">Hosting Vip</option>
+        <option value="No Hosting" selected>No Hosting</option>
+      </select>
+    </div>
+    <div class="form-group">
+        <input type="date" name="hostingFrom" class="form-control" placeholder="Hosting From" min="2020-01-01" max="2033-12-31">
+    </div>
+    <p>Domain</p>
+    <div class="form-group">
+      <select class="form-control" name="domain">
+        <option value="">-- Select Domain --</option>
+        <option value=".COM">Domain .COM</option>
+        <option value=".COM.AR">Domain .COM.AR</option>
+        <option value="Other Domain">Other Domain</option>
+        <option value="No Domain" selected>No Domain</option>
+      </select>
+    </div>
+    <div class="form-group">
+        <input type="text" name="otherDomainPrice" class="form-control" placeholder="Other Domain Price">
+    </div>
+    <div class="form-group">
+        <textarea name="domainDetails" placeholder="Domain Details" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <input type="date" name="domainFrom" class="form-control" placeholder="Hosting From" min="2020-01-01" max="2033-12-31">
+    </div>
+    <p>Other</p>
+    <div class="form-group">
+      <select class="form-control" name="otherService">
+        <option value="">-- Select Option --</option>
+        <option value="No" selected>No More Service</option>
+        <option value="Web Design">Web Design</option>
+        <option value="Video / Animation">Video/Animation</option>
+        <option value="Graphic Design">Graphic Design</option>
+        <option value="App Programming">App Programming</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+        <textarea name="description" placeholder="description" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <input type="number" name="price" class="form-control" placeholder="Price">
+    </div>
+    <div class="form-group">
+        <input type="date" name="otherServiceFrom" class="form-control" placeholder="Hosting From" min="2020-01-01" max="2033-12-31">
+    </div>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary btn-block">Save</button>
+    </div>
+</form>
+        </div>
+    </div>
+</div>
