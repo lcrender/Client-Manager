@@ -21,7 +21,11 @@ paymentsCtl.createNewPayment = async (req, res) => {
       const service = await ClientDb.findOne({
         _id: req.params.id,
         'service._id': req.params.ids
-      }).select('service.$').lean();
+      }).select('service').lean();
+      //const selectedService = service.service.find((s) => s._id == req.params.ids);
+      const serviceIndex = client.service.findIndex((s) => s._id == req.params.ids);
+
+      console.log(serviceIndex)
       if (client.user != req.user.id) {
         req.flash('error_msg', 'Client not authorized')
         return res.redirect('/clients');
@@ -42,7 +46,8 @@ paymentsCtl.createNewPayment = async (req, res) => {
         currency, 
         formattedDate 
       );
-      client.service[0].payments.push(newPayment);
+      //selectedService.payments.push(newPayment);
+      client.service[serviceIndex].payments.push(newPayment);
       await ClientDb.findByIdAndUpdate(req.params.id, client);
       req.flash('success_msg', 'New payment created');
       res.redirect('/client/' + req.params.id);
