@@ -22,22 +22,27 @@ paymentsCtl.createNewPayment = async (req, res) => {
         _id: req.params.id,
         'service._id': req.params.ids
       }).select('service').lean();
-      //const selectedService = service.service.find((s) => s._id == req.params.ids);
+
       const serviceIndex = client.service.findIndex((s) => s._id == req.params.ids);
 
-      console.log(serviceIndex)
       if (client.user != req.user.id) {
         req.flash('error_msg', 'Client not authorized')
         return res.redirect('/clients');
       };
       const { paymentMethod, details, price, currency } = req.body;
-      const date = new Date();
-      const day = date.getDate();
-      const month = date.getMonth() + 1;
-      const year = date.getFullYear();
-      const formattedDate = `${day}/${month}/${year}`;
+      // const date = new Date();
+      // const day = date.getDate();
+      // const month = date.getMonth() + 1;
+      // const year = date.getFullYear();
+      // const formattedDate = `${day}/${month}/${year}`;
+
+      let paymentDate = new Date()
+      //paymentDate.setFullYear(paymentDate.getFullYear());
+      let formattedDate = paymentDate.getFullYear() + '-' + (paymentDate.getMonth()+1).toString().padStart(2, '0') + '-' + paymentDate.getDate().toString().padStart(2, '0');
+
+
       if (price == "" || price == "undefined" || price == null) {
-        price = service.service[0].price
+        price = service.service[serviceIndex].price
       };
       const newPayment = new PaymentsObj(
         paymentMethod, 
@@ -46,7 +51,6 @@ paymentsCtl.createNewPayment = async (req, res) => {
         currency, 
         formattedDate 
       );
-      //selectedService.payments.push(newPayment);
       client.service[serviceIndex].payments.push(newPayment);
       await ClientDb.findByIdAndUpdate(req.params.id, client);
       req.flash('success_msg', 'New payment created');
