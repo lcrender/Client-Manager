@@ -5,6 +5,7 @@ const methodOverride = require('method-override');
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
+const formatDate = require('./helpers/formatDate');
 
 // Inicializaciones
 const app = express();
@@ -17,7 +18,10 @@ app.engine('.hbs', exphbs.engine({
     defaultLayout: 'main',
     layoutsDir: path.join(app.get('views'), 'layouts'),
     partialsDir: path.join(app.get('views'), 'partials'),
-    extname: '.hbs'
+    extname: '.hbs',
+    helpers: {
+        formatDate: formatDate
+    }
 }));
 app.set('view engine', 'hbs')
 

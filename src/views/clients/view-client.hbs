@@ -32,7 +32,7 @@
                                 <p class="serviceItem">Price: <span class="bold">{{this.price}}</span></p>
                                 <p class="serviceItem">Currency: {{this.currency}}</p>
                                 <p class="serviceItem">Details: {{this.details}}</p> 
-                                <p class="serviceItem">Date: {{this.date}}</p> 
+                                <p class="serviceItem">Date: {{formatDate this.date "DD/MM/YYYY"}}</p> 
                                 <form action="/payments/delete/{{../../client._id}}/{{../this._id}}/{{this._id}}?_method=DELETE" method="POST">
                                     <input type="hidden" name="method" value="DELETE">
                                     <button type="submit" class="btn btn-danger btn-block btn-sm">Delete Payment</button>

@@ -29,17 +29,16 @@ paymentsCtl.createNewPayment = async (req, res) => {
         req.flash('error_msg', 'Client not authorized')
         return res.redirect('/clients');
       };
-      const { paymentMethod, details, price, currency } = req.body;
+      const { paymentMethod, details, price, currency, paymentDate } = req.body;
       // const date = new Date();
       // const day = date.getDate();
       // const month = date.getMonth() + 1;
       // const year = date.getFullYear();
       // const formattedDate = `${day}/${month}/${year}`;
 
-      let paymentDate = new Date()
       //paymentDate.setFullYear(paymentDate.getFullYear());
-      let formattedDate = paymentDate.getFullYear() + '-' + (paymentDate.getMonth()+1).toString().padStart(2, '0') + '-' + paymentDate.getDate().toString().padStart(2, '0');
-
+      //let formattedDate = paymentDate.getFullYear() + '-' + (paymentDate.getMonth()+1).toString().padStart(2, '0') + '-' + paymentDate.getDate().toString().padStart(2, '0');
+      
 
       if (price == "" || price == "undefined" || price == null) {
         price = service.service[serviceIndex].price
@@ -49,7 +48,7 @@ paymentsCtl.createNewPayment = async (req, res) => {
         details, 
         price, 
         currency, 
-        formattedDate 
+        paymentDate 
       );
       client.service[serviceIndex].payments.push(newPayment);
       await ClientDb.findByIdAndUpdate(req.params.id, client);
